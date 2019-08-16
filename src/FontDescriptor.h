@@ -49,8 +49,6 @@ public:
     style = getString(obj.Get("style"));
     weight = static_cast<FontWeight>(getNumber(obj.Get("weight")));
     width = static_cast<FontWidth>(getNumber(obj.Get("width")));
-    italic = getBool(obj.Get("italic"));
-    monospace = getBool(obj.Get("monospace"));
   }
 
   FontDescriptor() {
@@ -60,8 +58,6 @@ public:
     style = NULL;
     weight = FontWeightUndefined;
     width = FontWidthUndefined;
-    italic = false;
-    monospace = false;
   }
 
   FontDescriptor(const char *path, const char *postscriptName, const char *family, const char *style,
@@ -148,13 +144,6 @@ private:
       return value.ToNumber().Int32Value();
     }
     return 0;
-  }
-
-  bool getBool(Napi::Value value) {
-    if (!value.IsEmpty() && value.IsBoolean()) {
-      return value.ToBoolean().Value();
-    }
-    return false;
   }
 };
 
