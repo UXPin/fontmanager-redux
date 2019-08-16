@@ -53,8 +53,6 @@ public:
     style = getString(obj, "style");
     weight = (FontWeight) getNumber(obj, "weight");
     width = (FontWidth) getNumber(obj, "width");
-    italic = getBool(obj, "italic");
-    monospace = getBool(obj, "monospace");
   }
 
   FontDescriptor() {
@@ -64,8 +62,6 @@ public:
     style = NULL;
     weight = FontWeightUndefined;
     width = FontWidthUndefined;
-    italic = false;
-    monospace = false;
   }
 
   FontDescriptor(const char *path, const char *postscriptName, const char *family, const char *style,
@@ -161,17 +157,6 @@ private:
     }
 
     return 0;
-  }
-
-  bool getBool(Local<Object> obj, const char *name) {
-    Nan::HandleScope scope;
-    MaybeLocal<Value> value = Nan::Get(obj, Nan::New<String>(name).ToLocalChecked());
-
-    if (!value.IsEmpty() && value.ToLocalChecked()->IsBoolean()) {
-      return value.ToLocalChecked()->BooleanValue(Nan::GetCurrentContext()).FromJust();
-    }
-
-    return false;
   }
 };
 
