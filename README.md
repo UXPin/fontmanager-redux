@@ -1,4 +1,4 @@
-# font-manager (redux)
+# fontmanager-redux
 
 ![Travis (.org)](https://img.shields.io/travis/eugeny/fontmanager-redux?label=Mac%2FLINUX&style=for-the-badge) ![AppVeyor](https://img.shields.io/appveyor/ci/eugeny/fontmanager-redux?label=windows&style=for-the-badge)
 
@@ -19,9 +19,9 @@ A C++ module for Node.js providing access to the system font catalog.
 
 ## Installation
 
-Installation of the `font-manager` module is via npm:
+Installation of the `fontmanager-redux` module is via npm:
 
-    npm install font-manager-redux
+    npm install fontmanager-redux
 
 On Linux, you also may need to install the `libfontconfig-dev` package, for example:
 
@@ -29,13 +29,13 @@ On Linux, you also may need to install the `libfontconfig-dev` package, for exam
 
 ## API
 
-You load the `font-manager` module using `require` as with all Node modules:
+You load the `fontmanager-redux` module using `require` as with all Node modules:
 
 ```javascript
-import * as fontManager from 'font-manager-redux';
+import * as fontManager from 'fontmanager-redux';
 ```
 
-All of the methods exported by `font-manager` have both synchronous and asynchronous versions available.
+All of the methods exported by `fontmanager-redux` have both synchronous and asynchronous versions available.
 You should generally prefer the asynchronous version as it will allow your program to continue doing other
 processing while a request for fonts is processing in the background, which may be expensive depending on
 the platform APIs that are available.
