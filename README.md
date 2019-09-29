@@ -1,6 +1,7 @@
-[![Build Status](https://travis-ci.org/devongovett/font-manager.svg)](https://travis-ci.org/devongovett/font-manager)
+# font-manager (redux)
 
-# font-manager
+![Travis (.org)](https://img.shields.io/travis/eugeny/fontmanager-redux?label=Mac%2FLINUX&style=for-the-badge) ![AppVeyor](https://img.shields.io/appveyor/ci/eugeny/fontmanager-redux?label=windows&style=for-the-badge)
+
 
 A C++ module for Node.js providing access to the system font catalog.
 
@@ -20,7 +21,7 @@ A C++ module for Node.js providing access to the system font catalog.
 
 Installation of the `font-manager` module is via npm:
 
-    npm install font-manager
+    npm install font-manager-redux
 
 On Linux, you also may need to install the `libfontconfig-dev` package, for example:
 
@@ -31,7 +32,7 @@ On Linux, you also may need to install the `libfontconfig-dev` package, for exam
 You load the `font-manager` module using `require` as with all Node modules:
 
 ```javascript
-var fontManager = require('font-manager');
+import * as fontManager from 'font-manager-redux';
 ```
 
 All of the methods exported by `font-manager` have both synchronous and asynchronous versions available.
@@ -53,7 +54,7 @@ Returns an array of all [font descriptors](#font-descriptor) available on the sy
 fontManager.getAvailableFonts(function(fonts) { ... });
 
 // synchronous API
-var fonts = fontManager.getAvailableFontsSync();
+const fonts = fontManager.getAvailableFontsSync();
 
 // output
 [ { path: '/Library/Fonts/Arial.ttf',
@@ -69,8 +70,8 @@ var fonts = fontManager.getAvailableFontsSync();
 
 ### findFonts(fontDescriptor)
 
-Returns an array of [font descriptors](#font-descriptor) matching a query 
-[font descriptor](#font-descriptor). 
+Returns an array of [font descriptors](#font-descriptor) matching a query
+[font descriptor](#font-descriptor).
 The returned array may be empty if no fonts match the font descriptor.
 
 ```javascript
@@ -78,7 +79,7 @@ The returned array may be empty if no fonts match the font descriptor.
 fontManager.findFonts({ family: 'Arial' }, function(fonts) { ... });
 
 // synchronous API
-var fonts = fontManager.findFontsSync({ family: 'Arial' });
+const fonts = fontManager.findFontsSync({ family: 'Arial' });
 
 // output
 [ { path: '/Library/Fonts/Arial.ttf',
@@ -103,7 +104,7 @@ var fonts = fontManager.findFontsSync({ family: 'Arial' });
 
 Returns a single [font descriptors](#font-descriptor) matching a query
 [font descriptors](#font-descriptor) as well as possible. This method
-always returns a result (never `null`), so sometimes the output will not 
+always returns a result (never `null`), so sometimes the output will not
 exactly match the input font descriptor if not all input parameters
 could be met.
 
@@ -112,7 +113,7 @@ could be met.
 fontManager.findFont({ family: 'Arial', weight: 700 }, function(font) { ... });
 
 // synchronous API
-var font = fontManager.findFontSync({ family: 'Arial', weight: 700 });
+const font = fontManager.findFontSync({ family: 'Arial', weight: 700 });
 
 // output
 { path: '/Library/Fonts/Arial Bold.ttf',
@@ -139,7 +140,7 @@ in `text`, it is not replaced and the font descriptor for the original font is r
 fontManager.substituteFont('TimesNewRomanPSMT', '汉字', function(font) { ... });
 
 // synchronous API
-var font = fontManager.substituteFontSync('TimesNewRomanPSMT', '汉字');
+const font = fontManager.substituteFontSync('TimesNewRomanPSMT', '汉字');
 
 // output
 { path: '/Library/Fonts/Songti.ttc',
@@ -156,7 +157,7 @@ var font = fontManager.substituteFontSync('TimesNewRomanPSMT', '汉字');
 
 Font descriptors are normal JavaScript objects that describe characteristics of
 a font.  They are passed to the `findFonts` and `findFont` methods and returned by
-all of the methods.  Any combination of the fields documented below can be used to 
+all of the methods.  Any combination of the fields documented below can be used to
 find fonts, but all methods return full font descriptors.
 
 Name             | Type    | Description
