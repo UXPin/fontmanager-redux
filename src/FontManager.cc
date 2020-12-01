@@ -103,7 +103,7 @@ Napi::Value findFonts(const Napi::CallbackInfo& info) {
   }
 
   Napi::Object desc = info[0].ToObject();
-  auto descriptor = std::make_unique<FontDescriptor>(desc);
+  std::unique_ptr<FontDescriptor> descriptor(new FontDescriptor(desc));
 
   if (async) {
     if (info.Length() < 2 || !info[1].IsFunction()) {
@@ -151,7 +151,7 @@ Napi::Value findFont(const Napi::CallbackInfo& info) {
   }
 
   Napi::Object desc = info[0].ToObject();
-  auto descriptor = std::make_unique<FontDescriptor>(desc);
+  std::unique_ptr<FontDescriptor> descriptor(new FontDescriptor(desc));
 
   if (async) {
     if (info.Length() < 2 || !info[1].IsFunction()) {
