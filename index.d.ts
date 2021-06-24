@@ -1,4 +1,4 @@
-declare module 'font-manager-redux' {
+declare module 'fontmanager-redux' {
     export interface FontDescriptor {
         readonly path: string;
         readonly style: string;
